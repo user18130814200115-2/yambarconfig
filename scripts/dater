@@ -1,0 +1,26 @@
+#!/bin/sh
+
+
+while true; do
+number=$(date +'%d')
+
+case $number in
+    1*)extension=th;;
+    *1)extension=st;;
+    *2)extension=nd;;
+    *3)extension=rd;;
+    *)extension=th;;
+esac
+
+date=$(date +"%B $(printf ${number##0}$extension) %Y")
+
+echo "date|string|$date" | tee /tmp/yambardate
+echo ""
+
+hour=$(date +'%H')
+minute=$(date +'%M')
+
+second=$(expr $hour \* 3600 + $minute \* 60)
+
+sleep "$second"
+done

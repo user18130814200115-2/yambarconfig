@@ -1,0 +1,221 @@
+bar:
+  font: inconsolata:sixelsize=11
+  height: 26
+  location: top
+  margin: 7
+  border:
+    top-margin: 5
+    color: D8DEE900 
+  background: D8DEE900
+  foreground: 2E3440ff
+
+  right:
+    - label:
+        content: 
+            string: 
+                text: " "
+                deco: {background: {color: D8DEE9ff}}
+    - script:
+        path: /home/user/.local/bin/yambar/mail
+        args: []
+        content: 
+            string: 
+                text:" {unread}"
+                deco: {background: {color: D8DEE9ff}}
+                on-click: /home/user/.local/bin/filter.sh
+    - script:
+        path: /home/user/.local/bin/yambar/governor-display
+        args: []
+        content: 
+            string: 
+                margin: 5
+                text: "{governor}"
+                deco: {background: {color: D8DEE9ff}}
+                on-click: /home/user/.local/bin/yambar/governor
+    - script:
+        path: /home/user/.local/bin/yambar/get-battery-percentage
+        args: []
+        content: 
+            string: 
+                margin: 5
+                text: "{battery}"
+                deco: {background: {color: D8DEE9ff}}
+    - script:
+        path: /home/user/.local/bin/yambar/get-wifi-bars
+        args: []
+        content: 
+            string: 
+                margin: 5
+                text: "{network} "
+                deco: {background: {color: D8DEE9ff}}
+                on-click: /home/user/.local/bin/yambar/wifi-menu
+  center:
+    - script:
+        path: /home/user/.local/bin/yambar/dater
+        args: []
+        content: 
+            string: 
+                margin: 5
+                text: " {date}"
+                deco: {background: {color: D8DEE9ff}}
+    - clock:
+        content:
+          - string:
+                margin: 5
+                text: "{time} "
+                deco: {background: {color: D8DEE9ff}}
+  left:
+    - river:
+        content:
+          map:
+            tag: occupied
+            values:
+              false: {empty: {}}
+              true:
+                  map:
+                      tag: id
+                      values:
+                        1:
+                            map:
+                                tag: focused
+                                values:
+                                    false:
+                                        string:
+                                            margin: 10 
+                                            text: "一"  
+                                            deco: {background: {color: D8DEE9ff}}
+                                    true:  
+                                        string:  
+                                            margin: 10 
+                                            text: "一"   
+                                            deco:    
+                                                background: 
+                                                    color: 81A1C1FF
+                        2:    
+                            map:    
+                                tag: focused    
+                                values:    
+                                    false:    
+                                        string:    
+                                            margin: 10
+                                            text: "二"  
+                                            deco: {background: {color: D8DEE9ff}}
+                                    true:    
+                                        string:    
+                                            margin: 10
+                                            text: "二"  
+                                            deco:    
+                                                background: 
+                                                    color: 81A1C1FF
+                        3:    
+                            map:    
+                                tag: focused    
+                                values:    
+                                    false:    
+                                        string:    
+                                            margin: 10
+                                            text: "三"  
+                                            deco: {background: {color: D8DEE9ff}}
+                                    true:    
+                                        string:    
+                                            margin: 10
+                                            text: "三"  
+                                            deco:    
+                                                background: 
+                                                    color: 81A1C1FF
+                        4:    
+                            map:    
+                                tag: focused    
+                                values:    
+                                    false:    
+                                        string:     
+                                            margin: 10  
+                                            text: "四"   
+                                            deco: {background: {color: D8DEE9ff}}
+                                    true:    
+                                        string:     
+                                            margin: 10  
+                                            text: "四"   
+                                            deco:    
+                                                background: 
+                                                    color: 81A1C1FF
+                        5:    
+                            map:    
+                                tag: focused    
+                                values:    
+                                    false:    
+                                        string:    
+                                            margin: 10
+                                            text: "五"  
+                                            deco: {background: {color: D8DEE9ff}}
+                                    true:       
+                                        string:     
+                                            margin: 10
+                                            text: "五"  
+                                            deco:     
+                                                background: 
+                                                    color: 81A1C1FF
+                        6:    
+                            map:    
+                                tag: focused    
+                                values:    
+                                    false:    
+                                        string:    
+                                            margin: 10
+                                            text: "六"   
+                                            deco: {background: {color: D8DEE9ff}}
+                                    true:    
+                                        string:    
+                                            margin: 10
+                                            text: "六"   
+                                            deco:    
+                                                background: 
+                                                    color: 81A1C1FF
+                        7:    
+                            map:    
+                                tag: focused    
+                                values:    
+                                    false:    
+                                        string:    
+                                            margin: 10
+                                            text: "七"   
+                                            deco: {background: {color: D8DEE9ff}}
+                                    true:        
+                                        string:        
+                                            margin: 10
+                                            text: "七"   
+                                            deco:      
+                                                background: 
+                                                    color: 81A1C1FF
+                        8:         
+                            map:      
+                                tag: focused    
+                                values:    
+                                    false:    
+                                        string:    
+                                            margin: 10
+                                            text: "八"   
+                                            deco: {background: {color: D8DEE9ff}}
+                                    true:    
+                                        string:    
+                                            margin: 10
+                                            text: "八"   
+                                            deco:    
+                                                background: 
+                                                    color: 81A1C1FF
+                        9:    
+                            map:    
+                                tag: focused     
+                                values:       
+                                    false:       
+                                        string:     
+                                            margin: 10
+                                            text: "九"
+                                            deco: {background: {color: D8DEE9ff}}
+                                    true:      
+                                        string:     
+                                            margin: 10
+                                            text: "九"
+                                            deco:
+                                                background: 
+                                                    color: 81A1C1FF

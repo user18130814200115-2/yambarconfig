@@ -1,0 +1,15 @@
+#!/bin/sh
+
+printf "unread|string|\n" | tee /tmp/yambarmail
+printf "\n"
+
+while true; do
+    unread=$(imapfilter -c ~/.config/imapfilter/config.lua | sed -E 's/.*recent, ([^ ]*) .*/\1/g' | tr "\n" "+" | sed 's/+$/\n/g' | bc)
+    
+    [ $unread -gt 0 ] &&\
+        printf "unread|string| \n" | tee /tmp/yambarmail ||\
+        printf "unread|string|\n" | tee /tmp/yambarmail
+    
+    printf "\n"
+    sleep 60
+done

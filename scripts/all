@@ -1,0 +1,11 @@
+#!/bin/sh
+
+data=$(date +'%H:%M' | cat \
+    /tmp/yambaramp\
+    /tmp/yambarbitcoin\
+    /tmp/yambargovernor\
+    /tmp/yambarwifi\
+    /tmp/yambardate\
+    -\
+    | cut -d"|" -f3 | xargs)
+notify-send.sh "$data"

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+update() {
+    sleep infinity &
+    file="$HOME/.cache/governor"
+    state=$(cat $file)
+    
+    case $state in
+	powersave)char=▤;;
+	ondemand)char=▦;;
+	schedutil)char=▩;;
+    esac
+
+    printf "governor|string|$char\n" | tee /tmp/yambargovernor
+    
+    printf "\n"
+    trap update USR1
+    wait
+}
+
+update

@@ -1,0 +1,35 @@
+#!/bin/sh
+
+#while true; do
+#    raw=$(nmcli -g 'IN-USE, BARS' device wifi list | grep "^\*")
+#    
+#    case "$raw" in
+#        \*:\*\ \ \ ) bars="▂   ";;
+#        \*:\*\*\ \ ) bars="▂▄  ";;
+#        \*:\*\*\*\ ) bars="▂▄▆ ";;
+#        \*:\*\*\*\*) bars="▂▄▆█";;
+#    esac
+#
+#    [ -z "$bars" ] && bars=${raw#*:}
+#
+#    bars=$(echo "$bars" | sed 's/_/ /')
+#    
+#    echo "network|string|$bars" | tee /tmp/yambarwifi
+#    echo ""
+#    sleep 5
+#done
+
+while true; do
+
+    raw=$(iw dev wlan0 link | grep signal | grep -o '[0-9]*')
+    bars="    "
+    [ $raw -gt 69 ] && bars="▂   "
+    [ $raw -lt 70 ] && bars="▂▄  "
+    [ $raw -lt 60 ] && bars="▂▄▆ "
+    [ $raw -lt 50 ] && bars="▂▄▆█"
+
+    echo "network|string|$bars" | tee /tmp/yambarwifi
+    echo ""
+    sleep 0.5
+
+done

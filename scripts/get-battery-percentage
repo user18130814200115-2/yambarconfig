@@ -1,0 +1,8 @@
+#!/bin/sh
+while true; do
+    percentage=$(cat /sys/class/power_supply/cw2015-battery/capacity)
+    status=$(grep -q "Charging" /sys/class/power_supply/cw2015-battery/status && printf "")
+    printf "battery|string|$status$percentage%%\n" | tee /tmp/yambarbattery
+    printf "\n"
+    sleep 10
+done

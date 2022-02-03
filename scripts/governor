@@ -1,0 +1,17 @@
+#!/bin/sh
+
+file="$HOME/.cache/governor"
+displaypid=$(pgrep -f governor-display)
+state=$(cat $file)
+
+case $state in
+    powersave) state=schedutil;;
+    ondemand) state=powersave;;
+    schedutil) state=ondemand;;
+esac
+
+printf "$state" > $file
+
+doas cpupower frequency-set -g $state > /dev/null
+
+kill -USR1 $displaypid;
